@@ -35,7 +35,7 @@ export default function ProfilePage() {
       <Toaster position="top-center" reverseOrder={false} />
       <h1>Profile page</h1>
       <hr />
-      <h2>
+      <h2 className="text-blue-600">
         {data === "nothing" ? (
           "Nothing"
         ) : (
