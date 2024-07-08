@@ -3,7 +3,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
-
+import Link from "next/link";
 const Page = () => {
   const router = useRouter();
   const [user, setUser] = useState({
@@ -40,13 +40,15 @@ const Page = () => {
   }, [user.email, user.password]);
 
   return (
-    <div>
-      <div className="flex flex-col items-center justify-center min-h-screen py-2 border border-gray-400 focus:border-gray-600">
-        <Toaster position="top-center" reverseOrder={false} />
-        <h1>{loading ? "Processing" : "Login"}</h1>
-        <hr />
+    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+      <Toaster position="top-center" reverseOrder={false} />
+      <div className=" flex flex-col items-center justify-center border border-gray-400 p-6 rounded-lg shadow-lg">
+        <h1 className="mb-4 text-black">{loading ? "Processing" : "Login"}</h1>
+        <hr className="mb-4" />
 
-        <label htmlFor="email">Email</label>
+        <label className="text-black" htmlFor="email">
+          Email
+        </label>
         <input
           className="border border-gray-800 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
           id="email"
@@ -54,7 +56,9 @@ const Page = () => {
           onChange={(e) => setUser({ ...user, email: e.target.value })}
           type="email"
         />
-        <label htmlFor="password">Password</label>
+        <label className="text-black" htmlFor="password">
+          Password
+        </label>
         <input
           className="border border-gray-800 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
           id="password"
@@ -63,7 +67,7 @@ const Page = () => {
           type="password"
         />
         <button
-          className={`p-2 border border-gray-400 rounded-lg mb-4 bg-black text-white ${
+          className={`p-2 border border-gray-400 rounded-lg bg-black text-white ${
             buttonDisabled ? "opacity-50 cursor-not-allowed" : ""
           }`}
           onClick={onLogin}
@@ -71,6 +75,9 @@ const Page = () => {
         >
           {buttonText}
         </button>
+        <Link href={"/signup"} className=" text-blue-700">
+          Register
+        </Link>
       </div>
     </div>
   );
