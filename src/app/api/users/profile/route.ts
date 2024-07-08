@@ -10,7 +10,7 @@ connect();
 export async function POST(request: NextRequest) {
   try {
     const userID = await getDataFromToken(request);
-    console.log(userID);
+    // console.log(userID);
 
     const user = await User.findOne({ _id: userID }).select("-password");
     if (!user) {

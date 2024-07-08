@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
   try {
     const reqBody = await request.json();
     const { username, email, password } = reqBody;
-    console.log(reqBody);
+    // console.log(reqBody);
 
     const user = await User.findOne({ email });
     if (user) {
@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
 
     await sendEmail({ email, emailType: "VERIFY", userId: savedUser._id });
     return NextResponse.json({
-      message: "User registered successfully",
+      message: "User registered successfully check your mail for verification",
       success: true,
       savedUser,
     });

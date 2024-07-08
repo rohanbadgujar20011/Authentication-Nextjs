@@ -6,7 +6,7 @@ connect();
 export async function POST(request: NextRequest) {
   try {
     const { token } = await request.json();
-    console.log("token", token);
+    // console.log("token", token);
     const user = await User.findOne({
       verifyToken: token,
       verifyTokenExpiry: { $gt: Date.now() },
